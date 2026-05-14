@@ -1,0 +1,17 @@
+name: دانلود خودکار صفحه
+
+on:
+  workflow_dispatch:   # این یعنی دستی اجرا بشه
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: صفحه رو دانلود کن
+        run: curl -L -o saved-page.html "https://zinchangmanga.net"
+      
+      - name: فایل دانلودی رو نگه دار
+        uses: actions/upload-artifact@v4
+        with:
+          name: صفحه-دانلودی
+          path: saved-page.html
